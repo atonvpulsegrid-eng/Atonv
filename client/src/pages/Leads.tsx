@@ -23,7 +23,13 @@ export default function LeadsPage() {
   const [statusFilter, setStatusFilter] = useState<"all" | "active" | "pending" | "lost">("all");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [formData, setFormData] = useState({ company: "", contact: "", email: "", status: "pending" as const, value: 0 });
+  const [formData, setFormData] = useState<{ company: string; contact: string; email: string; status: "active" | "pending" | "lost"; value: number }>({
+    company: "",
+    contact: "",
+    email: "",
+    status: "pending",
+    value: 0,
+  });
 
   const filteredLeads = leads.filter((lead) => {
     const matchesSearch = lead.company.toLowerCase().includes(searchTerm.toLowerCase()) ||

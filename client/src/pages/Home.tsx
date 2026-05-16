@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Brain, Plug, TrendingUp, Users, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AIRouterChatBox from "@/components/AIRouterChatBox";
 
 export default function Home() {
   const features = [
@@ -120,6 +121,21 @@ export default function Home() {
               <div className="text-3xl font-bold text-pink-400">10B+</div>
               <div className="text-sm text-gray-400">API Calls/Month</div>
             </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* AI Router Chat Section */}
+      <section className="container mx-auto px-4 py-20 md:py-32">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-bold text-center mb-16">AI Router in Action</h2>
+          <div className="max-w-2xl mx-auto h-96">
+            <AIRouterChatBox />
           </div>
         </motion.div>
       </section>
