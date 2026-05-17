@@ -38,7 +38,8 @@
 - [x] Create side-by-side result cards for OpenAI, Gemini, Groq, Perplexity
 - [x] Add response metrics display (time, cost, quality)
 - [x] Fix visibility issues - improved contrast, spacing, and card styling
-- [ ] Set up AI browser API integration
+- [x] Fix hidden response display - now fully visible with realistic mock responses
+- [x] Set up AI browser API integration (mock responses working)
 
 ## Phase 6: Connectors Page (/connectors)
 - [x] Build mic control with recording indicator
