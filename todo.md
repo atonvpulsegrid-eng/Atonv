@@ -40,6 +40,10 @@
 - [x] Fix visibility issues - improved contrast, spacing, and card styling
 - [x] Fix hidden response display - now fully visible with realistic mock responses
 - [x] Set up AI browser API integration (mock responses working)
+- [x] Add multi-content type support (text, image, video, PDF, file)
+- [x] Create content type renderers with icons and download buttons
+- [x] Add mock data for different content types
+- [x] Display star ratings for quality scores
 
 ## Phase 6: Connectors Page (/connectors)
 - [x] Build mic control with recording indicator
