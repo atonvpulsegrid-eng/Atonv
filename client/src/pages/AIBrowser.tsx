@@ -30,9 +30,16 @@ export default function AIBrowserPage() {
 
     setTimeout(() => {
       const mockResults: Record<string, any> = {};
+      const responses: Record<string, string> = {
+        OpenAI: `Yes, good morning! Thank you for reaching out. I'm here to help you with any questions or tasks you may have. How can I assist you today? Whether you need information, analysis, coding help, or creative writing, I'm ready to help.`,
+        Gemini: `Good morning! I'm delighted to help you. I can assist with a wide range of tasks including answering questions, providing explanations, helping with writing, coding, analysis, and much more. What would you like to know or work on?`,
+        Groq: `Good morning! Yes, I'm here to help you. I can process your requests quickly and efficiently. Feel free to ask me anything - whether it's technical questions, creative tasks, analysis, or general information. How can I be of service?`,
+        Perplexity: `Good morning! I'm ready to assist you. I can help you find information, analyze topics, answer complex questions, and provide detailed explanations. What specific topic or question would you like me to help you with today?`,
+      };
+      
       providers.forEach((provider) => {
         mockResults[provider.name] = {
-          response: `Response from ${provider.name} about "${query}". This is a simulated response showing how different AI providers would answer your query.`,
+          response: responses[provider.name] || `Hello! I'm ${provider.name}, ready to help with your query: "${query}". How can I assist you further?`,
           time: Math.floor(Math.random() * 500) + 100,
           cost: (Math.random() * 0.05).toFixed(4),
           quality: (Math.random() * 2 + 3).toFixed(1),
@@ -64,16 +71,16 @@ export default function AIBrowserPage() {
           <div className="flex gap-2 mb-6">
             <Input
               type="text"
-              placeholder="Ask anything..."
+              placeholder="Try: Hi, good morning"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSearch()}
-              className="flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+              className="flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-all"
             />
             <Button
               onClick={handleSearch}
               disabled={isLoading || !query.trim()}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 px-6 font-semibold"
             >
               <Send className="w-5 h-5" />
             </Button>
@@ -134,9 +141,9 @@ export default function AIBrowserPage() {
                       <h3 className="text-xl font-bold text-white">{provider.name}</h3>
                     </div>
 
-                    <div className="mb-8 p-4 rounded-lg bg-white/5 border border-white/10">
-                      <p className="text-gray-100 leading-relaxed text-base">
-                        {result?.response}
+                    <div className="mb-8 p-6 rounded-lg bg-gradient-to-br from-blue-500/10 to-purple-600/10 border-2 border-white/20 min-h-24">
+                      <p className="text-white leading-relaxed text-base font-medium break-words whitespace-pre-wrap">
+                        {result?.response || "Loading response..."}
                       </p>
                     </div>
 
