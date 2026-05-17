@@ -108,67 +108,75 @@ export default function AIBrowserPage() {
           >
             <div className="text-center">
               <div className="w-12 h-12 rounded-full border-4 border-white/20 border-t-blue-500 animate-spin mx-auto mb-4" />
-              <p className="text-gray-400">Querying AI providers...</p>
+              <p className="text-gray-300 font-medium">Querying AI providers...</p>
             </div>
           </motion.div>
         ) : Object.keys(results).length > 0 ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            className="w-full"
           >
-            <div className="grid md:grid-cols-2 gap-6">
-              {providers.map((provider, idx) => (
-                <motion.div
-                  key={provider.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="p-6 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 hover:border-white/40 transition-all"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${provider.color}`} />
-                    <h3 className="text-lg font-semibold">{provider.name}</h3>
-                  </div>
+            <h2 className="text-2xl font-bold mb-8 text-white">Results from AI Providers</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {providers.map((provider, idx) => {
+                const result = results[provider.name];
+                return (
+                  <motion.div
+                    key={provider.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="p-8 rounded-2xl bg-gradient-to-br from-white/15 to-white/5 border-2 border-white/30 hover:border-white/60 transition-all shadow-lg"
+                  >
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${provider.color}`} />
+                      <h3 className="text-xl font-bold text-white">{provider.name}</h3>
+                    </div>
 
-                  <p className="text-gray-300 mb-6 leading-relaxed">
-                    {results[provider.name]?.response}
-                  </p>
+                    <div className="mb-8 p-4 rounded-lg bg-white/5 border border-white/10">
+                      <p className="text-gray-100 leading-relaxed text-base">
+                        {result?.response}
+                      </p>
+                    </div>
 
-                  <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/10">
-                    <div>
-                      <div className="flex items-center gap-1 text-sm text-gray-400 mb-1">
-                        <Zap className="w-4 h-4" />
-                        Speed
+                    <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/20">
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-1 text-sm text-gray-300 mb-2">
+                          <Zap className="w-4 h-4 text-yellow-400" />
+                          Speed
+                        </div>
+                        <p className="text-lg font-bold text-white">{result?.time}ms</p>
                       </div>
-                      <p className="text-lg font-semibold">{results[provider.name]?.time}ms</p>
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1 text-sm text-gray-400 mb-1">
-                        <TrendingUp className="w-4 h-4" />
-                        Cost
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-1 text-sm text-gray-300 mb-2">
+                          <TrendingUp className="w-4 h-4 text-green-400" />
+                          Cost
+                        </div>
+                        <p className="text-lg font-bold text-white">${result?.cost}</p>
                       </div>
-                      <p className="text-lg font-semibold">${results[provider.name]?.cost}</p>
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1 text-sm text-gray-400 mb-1">
-                        <Star className="w-4 h-4" />
-                        Quality
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-1 text-sm text-gray-300 mb-2">
+                          <Star className="w-4 h-4 text-blue-400" />
+                          Quality
+                        </div>
+                        <p className="text-lg font-bold text-white">{result?.quality}/5</p>
                       </div>
-                      <p className="text-lg font-semibold">{results[provider.name]?.quality}/5</p>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         ) : (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-20"
+            className="text-center py-32"
           >
-            <div className="text-5xl mb-4">🔍</div>
-            <p className="text-gray-400 text-lg">Enter a query to see responses from multiple AI providers</p>
+            <div className="text-6xl mb-6">🔍</div>
+            <p className="text-gray-300 text-xl font-medium">Enter a query to see responses from multiple AI providers</p>
+            <p className="text-gray-500 text-sm mt-3">Try one of the example queries above to get started</p>
           </motion.div>
         )}
       </div>

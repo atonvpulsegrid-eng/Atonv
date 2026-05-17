@@ -37,6 +37,7 @@
 - [x] Build clickable example query chips
 - [x] Create side-by-side result cards for OpenAI, Gemini, Groq, Perplexity
 - [x] Add response metrics display (time, cost, quality)
+- [x] Fix visibility issues - improved contrast, spacing, and card styling
 - [ ] Set up AI browser API integration
 
 ## Phase 6: Connectors Page (/connectors)
@@ -68,11 +69,11 @@
 - [ ] Add admin-only role gating
 
 ## Phase 9: Supporting Pages
-- [ ] Build /features page
-- [ ] Build /pricing page
-- [ ] Build /docs page
-- [ ] Build /blog page
-- [ ] Build /contact page
+- [x] Build /features page with feature grid and highlights
+- [x] Build /pricing page with 3 tiers and FAQ
+- [x] Build /docs page with documentation sections
+- [x] Build /blog page with featured post and blog grid
+- [x] Build /contact page with contact form and methods
 
 ## Phase 10: Backend API Routes
 - [ ] Implement /api/metrics endpoint with real-time data
@@ -124,3 +125,15 @@
 - [x] Project initialized with web-db-user scaffold
 - [x] All pages created (Home, Leads, AIBrowser, Connectors, Dashboard, Admin, etc.)
 - [x] AI Router with adaptive learning implemented
+
+## Phase 16: Contact Form Backend Integration
+- [ ] Implement contact form submission with owner notification
+- [ ] Add form validation and error handling
+- [ ] Add loading and success/error states to contact form
+
+## Phase 17: Final Verification & Deployment
+- [ ] Test all pages and features end-to-end
+- [ ] Verify build succeeds with no errors
+- [ ] Commit all changes to git
+- [ ] Push to GitHub main branch
+- [ ] Verify deployment on Vercel
